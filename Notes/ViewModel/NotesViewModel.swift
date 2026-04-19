@@ -9,26 +9,21 @@ import Combine
 import FirebaseCore
 import FirebaseAuth
 import FirebaseFirestore
-
+@MainActor
 class NotesViewModel: ObservableObject {
     @Published var notes: [NoteModel] = []
     let db = Firestore.firestore()
-
     private var notesCollection: CollectionReference? {
         guard let userID = Auth.auth().currentUser?.uid else {
             return nil
         }
-
         return db.collection("users").document(userID).collection("notes")
     }
-
     func fetchData() async {
         notes.removeAll()
-
         guard let notesCollection else {
             return
         }
-
         do {
             let querySnapshot = try await notesCollection.getDocuments()
             for document in querySnapshot.documents {
@@ -38,12 +33,10 @@ class NotesViewModel: ObservableObject {
             print(error)
         }
     }
-
-    func saveData(note: NoteModel) {
+    func saveData(note: NoteModel) -> Bool {
         guard let notesCollection else {
-            return
+            return false
         }
-
         do {
             if !note.title.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty || !note.content.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
                 if let id = note.id {
@@ -52,11 +45,12 @@ class NotesViewModel: ObservableObject {
                     try notesCollection.addDocument(from: note)
                 }
             }
+            return true
         } catch let error {
             print("Error writing city to Firestore: \(error)")
+            return false
         }
     }
-
     func clearData() {
         notes.removeAll()
     }

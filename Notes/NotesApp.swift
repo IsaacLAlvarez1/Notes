@@ -6,12 +6,10 @@
 //
 import SwiftUI
 import FirebaseCore
-
 class AppDelegate: NSObject, UIApplicationDelegate {
     func application(_ application: UIApplication,
                    didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
     FirebaseApp.configure()
-
     return true
     }
 }
@@ -20,7 +18,6 @@ struct NotesApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     @StateObject var notes = NotesViewModel()
     @StateObject var auth = AuthViewModel()
-
     var body: some Scene {
         WindowGroup {
             RootView()
@@ -29,13 +26,11 @@ struct NotesApp: App {
         }
     }
 }
-
 struct RootView: View {
     @EnvironmentObject var auth: AuthViewModel
-
     var body: some View {
         Group {
-            if auth.userSession == nil {
+            if auth.currentUser == nil {
                 AuthView()
             } else {
                 ContentView()

@@ -9,6 +9,7 @@ struct NoteDetail: View {
     @Binding var note: NoteModel
     @EnvironmentObject var notesvm: NotesViewModel
     @Environment(\.dismiss) var dismiss
+    let isNewNote: Bool
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
             TextField("Title", text: $note.title)
@@ -21,15 +22,17 @@ struct NoteDetail: View {
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
                 Button("Save") {
-                    notesvm.saveData(note: note)
-                    note.title = ""
-                    note.content = ""
-                    dismiss()
+                    if notesvm.saveData(note: note) {
+                        if isNewNote {
+                            note = NoteModel(title: "", content: "")
+                        }
+                        dismiss()
+                    }
                 }
             }
         }
     }
 }
 #Preview {
-    NoteDetail(note: .constant(NoteModel(title: "Hello", content: "First Note")))
+    NoteDetail(note: .constant(NoteModel(title: "Hello", content: "First Note")), isNewNote: false)
 }

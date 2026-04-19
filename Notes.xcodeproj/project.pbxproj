@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D0EEFDA12F941E020053F803 /* Algorithms in Frameworks */ = {isa = PBXBuildFile; productRef = D0EEFDA02F941E020053F803 /* Algorithms */; };
+		D0C2BEF62F943F0600E2F976 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = D0C2BEF52F943F0600E2F976 /* FirebaseAuth */; };
 		D0EEFDA42F941EA40053F803 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = D0EEFDA32F941EA40053F803 /* FirebaseAnalytics */; };
 		D0EEFDA62F941EA40053F803 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = D0EEFDA52F941EA40053F803 /* FirebaseFirestore */; };
 /* End PBXBuildFile section */
@@ -30,18 +30,26 @@
 			buildActionMask = 2147483647;
 			files = (
 				D0EEFDA42F941EA40053F803 /* FirebaseAnalytics in Frameworks */,
-				D0EEFDA12F941E020053F803 /* Algorithms in Frameworks */,
 				D0EEFDA62F941EA40053F803 /* FirebaseFirestore in Frameworks */,
+				D0C2BEF62F943F0600E2F976 /* FirebaseAuth in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D0C2BEF42F943F0600E2F976 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		D0EEFD862F941B160053F803 = {
 			isa = PBXGroup;
 			children = (
 				D0EEFD912F941B160053F803 /* Notes */,
+				D0C2BEF42F943F0600E2F976 /* Frameworks */,
 				D0EEFD902F941B160053F803 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -74,9 +82,9 @@
 			);
 			name = Notes;
 			packageProductDependencies = (
-				D0EEFDA02F941E020053F803 /* Algorithms */,
 				D0EEFDA32F941EA40053F803 /* FirebaseAnalytics */,
 				D0EEFDA52F941EA40053F803 /* FirebaseFirestore */,
+				D0C2BEF52F943F0600E2F976 /* FirebaseAuth */,
 			);
 			productName = Notes;
 			productReference = D0EEFD8F2F941B160053F803 /* Notes.app */;
@@ -369,10 +377,10 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		D0EEFDA02F941E020053F803 /* Algorithms */ = {
+		D0C2BEF52F943F0600E2F976 /* FirebaseAuth */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = D0EEFD9F2F941E020053F803 /* XCRemoteSwiftPackageReference "swift-algorithms" */;
-			productName = Algorithms;
+			package = D0EEFDA22F941EA40053F803 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
 		};
 		D0EEFDA32F941EA40053F803 /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;
